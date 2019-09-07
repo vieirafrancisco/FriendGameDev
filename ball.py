@@ -27,7 +27,10 @@ class Ball:
             self.speedx = -self.speedx
 
     def draw(self, surface):
-        pygame.draw.circle(surface, self.color, tuple(map(lambda x : int(x), self.rect.position)), self.radius)
+        posx, posy = self.rect.position
+        posx = posx + self.radius
+        posy = posy + self.radius
+        pygame.draw.circle(surface, self.color, (int(posx), int(posy)), self.radius)
     
 
     def update(self):
