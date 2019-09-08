@@ -22,9 +22,14 @@ class Ball:
 
         self.rect.move(self.speedx / self.fps, self.speedy / self.fps)
 
-    def collision(self, player):
-        if self.rect.collide(player):
-            self.speedx = -self.speedx
+    def collision(self, player_rect):
+        posx, posy = self.rect.position
+
+        if self.rect.collide(player_rect):
+            if posx < WIDTH/2:
+                self.speedx = abs(self.speedx)
+            elif posx > WIDTH/2:
+                self.speedx = -abs(self.speedx)
 
     def draw(self, surface):
         posx, posy = self.rect.position
